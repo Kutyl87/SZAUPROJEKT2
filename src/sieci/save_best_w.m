@@ -1,0 +1,1 @@
+save("best_w.mat",'tested_w1','tested_w2','tested_w10','tested_w20','tested_er')
