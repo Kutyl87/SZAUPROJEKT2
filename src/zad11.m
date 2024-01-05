@@ -1,0 +1,34 @@
+% % % net = feedforwardnet(10);
+% % % net.layers{1}.transferFcn = 'poslin';
+% % % net.layers{2}.transferFcn = 'siglog';
+load sieci/dane.txt
+input_delay = 5:6;
+output_delay = 1:2;
+neuron_number = 10;
+net = narxnet(5:6, 1:2, neuron_number);
+X = dane(:, 1);
+Y = dane(:, 2);
+X = tonndata(X,false,false);
+Y = tonndata(Y,false,false);
+[Xs,Xi,Ai,Ts] = preparets(net,X,{},Y);
+net.trainFcn = 'trainlm';
+net.trainParam.epochs = 10;
+net = train(net, Xs, Ts, Xi, Ai);
+Y_pred = sim(net, Xs, Xi, Ai);
+figure;
+plot(cell2mat(Ts), '-');
+hold on;
+plot(cell2mat(Y_pred), '-'); 
+legend('Actual', 'Predicted');
+load sieci/dane_wal.txt
+X_val = dane_wal(:, 1);
+Y_val = dane_wal(:, 2);
+X_val = tonndata(X_val,false,false);
+Y_val = tonndata(Y_val,false,false);
+[X_val, Xi_val, Ai_val, Ts_val] = preparets(net, X_val,{}, Y_val);
+Y_pred_val = sim(net, X_val, Xi_val, Ai_val);
+figure;
+plot(cell2mat(Ts_val), '-', 'DisplayName', 'Actual (Validation)');
+hold on;
+plot(cell2mat(Y_pred_val), '-', 'DisplayName', 'Predicted (Validation)');
+legend('show');
