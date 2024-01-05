@@ -20,24 +20,21 @@ for k = 6:length(u_valid)
 end
 E
 t= 1:length(u_valid);
-
 figure
-plot(y, 'DisplayName', 'Sygnał wyjściowy procesu')
+plot(y, 'DisplayName', 'Dane walidacyjne')
 hold on
-plot(y_valid, 'DisplayName', 'Sygnał wyjściowy modelu ')
-hold off
-title('Symulacja modelu');
+plot(y_valid, 'DisplayName', 'Dane ')
 % Dodanie osi X i Y z podpisami
-
+xlabel('Oś X');
+ylabel('Oś Y');
 
 % Dodanie legendy
 legend('show');
-matlab2tikz('zad2.7valid.tex' , 'showInfo' , false)
-tested_w1 = [tested_w1; w1];
-tested_w2 = [tested_w2; w2];
-tested_w10 = [tested_w10; w10];
-tested_w20 = [tested_w20; w20];
-tested_er = [tested_er; E]
+% tested_w1 = [tested_w1; w1];
+% tested_w2 = [tested_w2; w2];
+% tested_w10 = [tested_w10; w10];
+% tested_w20 = [tested_w20; w20];
+% tested_er = [tested_er; E]
 
 
 y(1:length(u_valid)) = 0;
@@ -54,16 +51,4 @@ for k = 6:length(u_valid)
     E_train = E_train + (y(k) - y_train(k))^2;
 end
 
-t= 1:length(u_valid);
-figure
-plot(y, 'DisplayName', 'Sygnał wyjściowy procesu')
-hold on
-plot(y_train, 'DisplayName', 'Sygnał wyjściowy modelu ')
-% Dodanie osi X i Y z podpisami
-
-
-% Dodanie legendy
-legend('show');
-title('Symulacja modelu');
-matlab2tikz('zad2.7train.tex' , 'showInfo' , false)
-tested_er_train = [tested_er_train; E_train]
+% tested_er_train = [tested_er_train; E_train]
