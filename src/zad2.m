@@ -37,7 +37,12 @@ end
 t = 1:2000
 plot_data = [u' y']
 save('sieci/dane.txt','plot_data','-ascii')
-scatter(t,y);
+figure
+scatter(t,y, 14, 'red', 'filled');
+xlabel("Numer próbki - k")
+ylabel("Wartość na wyjściu - y")
+title("Dane Treningowe")
+matlab2tikz('danetren.tex' , 'showInfo' , false) 
 y = [];
 u = [];
 split_sep = 3;
@@ -65,4 +70,8 @@ figure
 plot_data = [u' y']
 save('sieci/dane_wal.txt','plot_data','-ascii')
 t = 1:2000
-scatter(t,y);
+scatter(t,y, 14, 'red', 'filled');
+matlab2tikz('danewer.tex' , 'showInfo' , false) 
+xlabel("Numer próbki - k")
+ylabel("Wartość na wyjściu - y")
+title("Dane Weryfikujące")
