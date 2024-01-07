@@ -31,8 +31,6 @@ end
 plot(y, "LineWidth",1);
 hold on
 plot(u, LineStyle="--", LineWidth=1)
-ylim([0,1.3])
-xlim([0 50])
 xlabel("Numer próbki - k")
 ylabel("Wartość na wyjściu - y")
 title("Przebieg wartości na wyjściu")
