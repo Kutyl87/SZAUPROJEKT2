@@ -43,10 +43,10 @@ d(1:kk) = 0;
 teta = 5;
 y(1:kk) = 0;
 N = 210;
-Nu=70;
+Nu=45;
 global_k = 0;
 %% Pętla regulatora
-lambda = 5;
+lambda = 120;
 Umax =1;
 Umin = -1;
 
